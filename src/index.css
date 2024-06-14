@@ -15,18 +15,69 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
   color: #213547;
 }
 
+.App {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 h1 {
-  font-size: 3.2em;
+  font-size: 2.5rem;
   line-height: 1.1;
 }
 
+form,
+.form-row {
+  display: flex;
+  flex-direction: column;
+}
+
+#item {
+  font-family: inherit;
+  padding: 0.8em 0.5em;
+  margin: 0.6em 0;
+  border-radius: 2px;
+  border: 1.5px solid #ccc;
+  outline: none;
+}
+
+.btn {
+  border: 1px solid #2135;
+  border-radius: 2px;
+  padding: 0.5em;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #213547;
+  color: #f9f9f9;
+}
+
+.add-task_btn {
+  margin: 0.8em 0em 0em;
+  align-self: center;
+  width: 100px;
+}
+
+#checkbox {
+  margin-right: 0.7em;
+}
+
+.delete_btn {
+  width: 60px;
+  margin-left: 0.5em;
+}
+
+.delete_btn:hover {
+  border: 1px solid #747bff;
+  background-color: #747bff;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
