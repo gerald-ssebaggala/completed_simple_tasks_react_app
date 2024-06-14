@@ -78,6 +78,15 @@ form,
   border: 1px solid #747bff;
   background-color: #747bff;
 }
+
+/* Task */
+
+.task {
+  list-style: none;
+  margin: 1em 0;
+  padding: 0.5em;
+  background-color: #cccccc4e;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
