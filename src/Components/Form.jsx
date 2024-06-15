@@ -27,7 +27,23 @@ const Form = () => {
       return [...pretasks, newTask];
     });
     setTask("");
-    console.log(taskList);
+  }
+
+  function handleDeleteTask(id) {
+    setTaskList((currentTasks) =>
+      currentTasks.filter((task) => task.id !== id)
+    );
+  }
+
+  function toggleTask(id, completed) {
+    setTaskList((currentTasks) =>
+      currentTasks.map((task) => {
+        if (task.id === id) {
+          return { ...task, completed };
+        }
+        return task;
+      })
+    );
   }
 
   return (
@@ -54,6 +70,8 @@ const Form = () => {
 
       <h1 className="title">Todo List</h1>
 
+      {taskList.length === 0 && " Currently no Todo tasks! "}
+
       <ul className="todo-list">
         {taskList.map((todoTask) => (
           <li className="task" key={todoTask.id}>
@@ -62,18 +80,18 @@ const Form = () => {
                 type="checkbox"
                 id="checkbox"
                 checked={todoTask.completed}
+                onChange={(e) => toggleTask(todoTask.id, e.target.checked)}
               />
               {todoTask.title}
             </label>
-            <button className="btn delete_btn">Delete</button>
+            <button
+              className="btn delete_btn"
+              onClick={() => handleDeleteTask(todoTask.id)}
+            >
+              Delete
+            </button>
           </li>
         ))}
-        <li className="task">
-          <label htmlFor="">
-            <input type="checkbox" id="checkbox" />s item 1
-          </label>
-          <button className="btn delete_btn">Delete</button>
-        </li>
       </ul>
     </div>
   );

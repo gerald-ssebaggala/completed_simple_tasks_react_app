@@ -18,4 +18,14 @@
 - Data from a database: If your data is coming from a database, you can use the database keys/IDs, which are unique by nature.
   Locally generated data: If your data is generated and persisted locally (e.g. notes in a note-taking app), use an incrementing counter, [crypto.randomUUID()] or a package like uuid when creating items.
 
-- Array methods like [map() and filter()] can't be avoided
+      const newTask = {
+      // id: +new Date(),
+      id: crypto.randomUUID(),
+      title: task,
+      completed: false,
+
+  };
+
+- Array methods like [map() and filter()] can't be avoided....
+
+- filter method is an array method that creates a new array with all elements that pass the test implemented by the provided function.
