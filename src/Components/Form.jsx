@@ -4,23 +4,35 @@ const Form = () => {
   const [task, setTask] = useState("");
 
   const [taskList, setTaskList] = useState([
-    "Calling parents",
-    "Call my Siblings",
-    "Finish up my projects",
+    // "Calling parents",
+    // "Call my Siblings",
+    // "Finish up my projects",
   ]);
 
   function handleChange(e) {
     setTask(e.target.value);
   }
 
-  function handleAddTask() {
-    setTaskList((prestate) => [...prestate]);
-    console.log("added");
+  function handleAddTask(e) {
+    e.preventDefault();
+
+    const newTask = {
+      // id: +new Date(),
+      id: crypto.randomUUID(),
+      title: task,
+      completed: false,
+    };
+
+    setTaskList((pretasks) => {
+      return [...pretasks, newTask];
+    });
+    setTask("");
+    console.log(taskList);
   }
 
   return (
     <div>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form>
         <div className="form-row">
           <label htmlFor="item">New Item:</label>
           <input
@@ -31,7 +43,11 @@ const Form = () => {
             onChange={handleChange}
           />
         </div>
-        <button className="btn add-task_btn" onClick={handleAddTask}>
+        <button
+          type="submit"
+          className="btn add-task_btn"
+          onClick={handleAddTask}
+        >
           Add Task
         </button>
       </form>
@@ -39,19 +55,22 @@ const Form = () => {
       <h1 className="title">Todo List</h1>
 
       <ul className="todo-list">
-        {taskList.map((task, id) => (
-          <li className="task" key={id}>
+        {taskList.map((todoTask) => (
+          <li className="task" key={todoTask.id}>
             <label htmlFor="">
-              <input type="checkbox" id="checkbox" />
-              {task}
+              <input
+                type="checkbox"
+                id="checkbox"
+                checked={todoTask.completed}
+              />
+              {todoTask.title}
             </label>
             <button className="btn delete_btn">Delete</button>
           </li>
         ))}
         <li className="task">
           <label htmlFor="">
-            <input type="checkbox" id="checkbox" />
-            item 1
+            <input type="checkbox" id="checkbox" />s item 1
           </label>
           <button className="btn delete_btn">Delete</button>
         </li>
