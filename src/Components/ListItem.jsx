@@ -2,7 +2,19 @@ const ListItem = ({ taskList, setTaskList, toggleTask, handleDeleteTask }) => {
   return (
     <ul className="todo-list">
       {taskList.map((todoTask) => (
-        <li className="task" key={todoTask.id}>
+        <li
+          className="task"
+          key={todoTask.id}
+          style={
+            todoTask.completed
+              ? {
+                  textDecoration: "line-through",
+                  textDecorationColor: "#16e0bd",
+                  //   textDecoration: "blur"
+                }
+              : {}
+          }
+        >
           <label htmlFor="">
             <input
               type="checkbox"

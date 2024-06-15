@@ -1,9 +1,20 @@
 import Form from "./Components/Form";
 import ListItem from "./Components/ListItem";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState(() => {
+    const storedTasks = localStorage.getItem("myTasks");
+
+    if (storedTasks == null) return [];
+    return JSON.parse(storedTasks);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("myTasks", JSON.stringify(taskList));
+  }, [taskList]);
+
+  // console.log(storedTasks);
 
   function handleDeleteTask(id) {
     setTaskList((currentTasks) =>
