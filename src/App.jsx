@@ -1,5 +1,6 @@
 import Form from "./Components/Form";
 import ListItem from "./Components/ListItem";
+import Sort from "./Components/Sort";
 import { useEffect, useState } from "react";
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
         handleDeleteTask={handleDeleteTask}
         toggleTask={toggleTask}
       />
+      <sort taskList={taskList} setTaskList={setTaskList} />
     </div>
   );
 }
